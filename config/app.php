@@ -167,6 +167,7 @@ return [
          */
         YbrNX\MariaDB\MariaDBServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
 
     ],
 
