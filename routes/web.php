@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Группа роутов админки
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', 'Dashboard\DashboardController@index');
+});
