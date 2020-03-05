@@ -173,15 +173,20 @@ return [
     */
 
     'menu' => [
-        [
+        /*[
             'text' => 'search',
-            'search' => true,
-            'topnav' => true,
+            'search' => false,
+            'topnav' => false,
+        ],*/
+        [
+            'text' => 'Dashboard',
+            'url'  => 'dashboard',
+            'can'  => 'manage-blog',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'profile',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text'        => 'pages',
@@ -190,52 +195,30 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'header' => 'PLATFORM MANAGMENT',
+            'permission' => 'rbacManagment',
         ],
+ 
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'permission' => 'rbacManagment',
+            'text'    => 'Управление RBAC',
+            'icon'    => 'fas fa-fw fa-user-cog',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Пользователи',
+                    'url'  => 'dashboard/users',
+                    'icon' => 'fas fa-fw fa-user',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text'    => 'Роли',
+                    'url'     => 'dashboard/roles',                    
+                    'icon' => 'fas fa-fw fa-user-tag',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Разрешения',
+                    'url'  => 'dashboard/permission',
+                    'icon' => 'fas fa-fw fa-user-shield',
                 ],
             ],
         ],
@@ -272,8 +255,9 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        //JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
+        App\Filters\AdminMenuFilter::class,
     ],
 
     /*

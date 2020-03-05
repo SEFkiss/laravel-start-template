@@ -15,11 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Группа роутов админки
-Route::prefix('dashboard')->group(function () {
+//Routes group for admin
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'Dashboard\DashboardController@index');
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::resource('users', 'Rbac\UsersController');
+        Route::resource('permission', 'Rbac\PermissionController');
+        Route::resource('roles', 'Rbac\RolesController');
+    });    
 });
 
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');

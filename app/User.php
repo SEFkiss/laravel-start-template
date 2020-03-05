@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -10,6 +11,10 @@ use Laratrust\Traits\LaratrustUserTrait;
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
+    use Authorizable {
+        Authorizable::can insteadof LaratrustUserTrait;
+        LaratrustUserTrait::can as laratrustCan;
+    }
     use Notifiable;
 
     //Доступные методы: roles(), hasRole($name), hasPermission($permission), isAbleTo($permission), 

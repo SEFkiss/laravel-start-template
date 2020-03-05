@@ -6,5 +6,9 @@ use Laratrust\Models\LaratrustRole;
 
 class Role extends LaratrustRole
 {
-    //name, display_name, description
+    public $fillable = [
+        'name',
+        'display_name',
+        'description',
+    ];
 }
