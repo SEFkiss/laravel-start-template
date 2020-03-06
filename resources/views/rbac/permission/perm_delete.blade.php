@@ -16,4 +16,7 @@
 </main>
 </div>
 </div>
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 @endsection

@@ -61,7 +61,8 @@ return [
     'name_use' => 'Name permission',
     'b_create_perm' => 'Add New Permission',
     'b_create_perm_act' => 'Create Permission',
-    'b_update_perm_act' => 'Save Permission Changes'
+    'b_update_perm_act' => 'Save Permission Changes',
+    'success' => 'Successful!',
 
 
 

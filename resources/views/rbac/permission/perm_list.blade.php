@@ -1,5 +1,7 @@
 @extends('adminlte::page')
-
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 @section('content')
 <main role="main" class="col-md-12 ml-sm-auto  pt-3 px-4">
 
@@ -38,3 +40,6 @@
 </div>
 
 @endsection
+@section('js')
+    {!! Toastr::message() !!} 
+@stop

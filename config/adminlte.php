@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Dashboard',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -182,19 +182,20 @@ return [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
             'can'  => 'manage-blog',
+            'icon' => 'fas fa-fw fa-chart-line'
         ],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
         [
             'header' => 'PLATFORM MANAGMENT',
             'permission' => 'rbacManagment',
@@ -209,32 +210,50 @@ return [
                     'text' => 'Пользователи',
                     'url'  => 'dashboard/users',
                     'icon' => 'fas fa-fw fa-user',
+                    'active' => [
+                        'dashboard/users',
+                        'dashboard/users/create',
+                        'dashboard/users/*',
+                        'dashboard/users/*/edit'
+                    ],
                 ],
                 [
                     'text'    => 'Роли',
                     'url'     => 'dashboard/roles',                    
                     'icon' => 'fas fa-fw fa-user-tag',
+                    'active' => [
+                        'dashboard/roles',
+                        'dashboard/roles/create',
+                        'dashboard/roles/*',
+                        'dashboard/roles/*/edit'
+                    ],
                 ],
                 [
                     'text' => 'Разрешения',
                     'url'  => 'dashboard/permission',
                     'icon' => 'fas fa-fw fa-user-shield',
+                    'active' => [
+                        'dashboard/permission',
+                        'dashboard/permission/create',
+                        'dashboard/permission/*',
+                        'dashboard/permission/*/edit'
+                    ],
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
-        ],
+        // ['header' => 'labels'],
+        // [
+        //     'text'       => 'important',
+        //     'icon_color' => 'red',
+        // ],
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        // ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'aqua',
+        // ],
     ],
 
     /*
@@ -318,6 +337,22 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'toastr',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css',
                 ],
             ],
         ],

@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use App\Permission;
 use Lang;
+use Toastr;
 
 class UsersController extends Controller
 {
@@ -62,8 +63,8 @@ class UsersController extends Controller
         $role = Role::find($request->input('role_id'));
 
         $user->attachRole($role);
-
-        return redirect()->route('users.index')->with('success', Lang::get('rbac.user_success_create', ['name' => $user->name]));
+        Toastr::success(Lang::get('rbac.user_success_create', ['name' => $user->name]), Lang::get('rbac.success'));
+        return redirect()->route('users.index');
     }
 
     // Delete Confirmation Page
@@ -141,8 +142,8 @@ class UsersController extends Controller
             // Update permission of the user
             //$permission = Permission::find($request->input('permission_id'));
             //$user->attachPermission($permission);
-
-            return redirect()->route('users.index')->with('success', Lang::get('rbac.user_success_update', ['name' => $user->name]));
+            Toastr::success(Lang::get('rbac.user_success_update', ['name' => $user->name]), Lang::get('rbac.success'));
+            return redirect()->route('users.index');
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return response()->view('errors.' . '404');
@@ -164,8 +165,8 @@ class UsersController extends Controller
             }
 
             $user->delete();
-
-            return redirect()->route('users.index')->with('success', Lang::get('rbac.user_success_delete', ['name' => $user->name]));
+            Toastr::success(Lang::get('rbac.user_success_delete', ['name' => $user->name]), Lang::get('rbac.success'));
+            return redirect()->route('users.index');
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return response()->view('errors.' . '404');

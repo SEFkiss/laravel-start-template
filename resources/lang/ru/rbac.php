@@ -53,13 +53,14 @@ return [
     'create_perm' => 'Добавить разрешение',
     'edit_perm' => 'Обновление разрешения',
     'delete_perm' => 'Удаление разрешения',
-    'm_perm_suc_create' => 'Разрешение <strong> :name </strong> бфло успешно создано.',
-    'm_perm_suc_update' => 'Разрешение <strong> :name </strong> бфло успешно обновлено.',
-    'm_perm_suc_delete' => 'Разрешение <strong> :name </strong> бфло успешно удалено.',
+    'm_perm_suc_create' => 'Разрешение <strong> :name </strong> было успешно создано.',
+    'm_perm_suc_update' => 'Разрешение <strong> :name </strong> было успешно обновлено.',
+    'm_perm_suc_delete' => 'Разрешение <strong> :name </strong> было успешно удалено.',
     'edit' => 'Редактировать',
     'name_use' => 'Название (use)',
     'b_create_perm' => 'Добавить разрешение',
     'b_create_perm_act' => 'Создать разрешение',
-    'b_update_perm_act' => 'Сохранить изменения'
+    'b_update_perm_act' => 'Сохранить изменения',
+    'success' => 'Успешно!',
 
 ];

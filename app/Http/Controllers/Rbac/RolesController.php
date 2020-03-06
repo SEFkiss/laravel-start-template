@@ -8,6 +8,7 @@ use App\Role;
 use App\Permission;
 use Illuminate\Support\Facades\DB;
 use Lang;
+use Toastr;
 
 class RolesController extends Controller
 {
@@ -54,8 +55,8 @@ class RolesController extends Controller
             'display_name' => $request->input('display_name'),
             'description' => $request->input('description'),
         ]);
-
-        return redirect()->route('roles.index')->with('success', Lang::get('rbac.m_role_suc_create', ['name' => $role->name]));
+        Toastr::success(Lang::get('rbac.m_role_suc_create', ['name' => $role->name]), Lang::get('rbac.success'));
+        return redirect()->route('roles.index');
     }
 
     // Roles Delete Confirmation Page
@@ -125,8 +126,8 @@ class RolesController extends Controller
             foreach ($request->input('permission_id') as $key => $value) {
                 $role->attachPermission($value);
             }
-
-            return redirect()->route('roles.index')->with('success', Lang::get('rbac.m_role_suc_update', ['name' => $role->name]));
+            Toastr::success(Lang::get('rbac.m_role_suc_update', ['name' => $role->name]), Lang::get('rbac.success'));
+            return redirect()->route('roles.index');
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return response()->view('errors.' . '404');
@@ -148,8 +149,8 @@ class RolesController extends Controller
             $role->permissions()->sync([]); // Delete relationship data
 
             $role->forceDelete(); // Now force delete will work regardless of whether the pivot table has cascading delete
-
-            return redirect()->route('roles.index')->with('success', Lang::get('rbac.m_role_suc_delete', ['name' => $role->name]));
+            Toastr::success(Lang::get('rbac.m_role_suc_delete', ['name' => $role->name]), Lang::get('rbac.success'));
+            return redirect()->route('roles.index');
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return response()->view('errors.' . '404');

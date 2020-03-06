@@ -9,6 +9,7 @@ use App\Role;
 use App\Permission;
 use Illuminate\Support\Facades\DB;
 use Lang;
+use Toastr;
 
 class PermissionController extends Controller
 {
@@ -53,8 +54,8 @@ class PermissionController extends Controller
             'display_name' => $request->input('display_name'),
             'description' => $request->input('description'),
         ]);
-
-        return redirect()->route('permission.index')->with('success', Lang::get('rbac.m_perm_suc_create', ['name' => $permission->name]));
+        Toastr::success(Lang::get('rbac.m_perm_suc_create', ['name' => $permission->name]), Lang::get('rbac.success'));
+        return redirect()->route('permission.index');
     }
 
     // Permission Delete Confirmation Page
@@ -116,8 +117,8 @@ class PermissionController extends Controller
             $permission->description = $request->input('description');
 
             $permission->save();
-
-            return redirect()->route('permission.index')->with('success',  Lang::get('rbac.m_perm_suc_update', ['name' => $permission->name]));
+            Toastr::success(Lang::get('rbac.m_perm_suc_update', ['name' => $permission->name]), Lang::get('rbac.success'));
+            return redirect()->route('permission.index');
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return response()->view('errors.' . '404');
@@ -133,8 +134,8 @@ class PermissionController extends Controller
             $permission = Permission::findOrFail($id);
             DB::table("permission_role")->where('permission_id', $id)->delete();
             $permission->delete();
-            
-            return redirect()->route('permission.index')->with('success', Lang::get('rbac.m_perm_suc_delete', ['name' => $permission->name]));
+            Toastr::success(Lang::get('rbac.m_perm_suc_delete', ['name' => $permission->name]), Lang::get('rbac.success'));
+            return redirect()->route('permission.index');
         } catch (ModelNotFoundException $ex) {
             if ($ex instanceof ModelNotFoundException) {
                 return response()->view('errors.' . '404');

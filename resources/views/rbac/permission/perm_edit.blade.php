@@ -1,6 +1,9 @@
 @extends('adminlte::page')
 
 @section('content')
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 <main role="main" class="col-md-12 ml-sm-auto pt-3 px-4">
 
     <a class="btn btn-sm btn-primary" href="{{route('permission.index')}}">@lang('rbac.b_back')</a>

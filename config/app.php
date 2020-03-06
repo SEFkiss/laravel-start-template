@@ -168,6 +168,7 @@ return [
         YbrNX\MariaDB\MariaDBServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +231,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
 
     ],
 
